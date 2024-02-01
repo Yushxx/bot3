@@ -33,7 +33,15 @@ ${sequenceTemplate}
 
 🚨 FONCTIONNE UNIQUEMENT SUR 1XBET ET LINEBET AVEC LE CODE PROMO Free221 ✅️ !`;
     
-    bot.sendMessage(chatId, sequenceMessage); // Adjust the logic to send the message to the channel
+    const options = {
+        reply_markup: {
+            inline_keyboard: [
+                [{ text: 'Signal suivant ✅️', callback_data: 'next_signal' }]
+            ]
+        }
+    };
+
+    bot.sendMessage(chatId, sequenceMessage, options);
 }
 
 // Bot start command
@@ -63,6 +71,8 @@ bot.on('callback_query', (callbackQuery) => {
 
     if (callbackQuery.data === 'accept') {
         bot.sendMessage(chatId, 'Veuillez entrer votre ID.');
+    } else if (callbackQuery.data === 'next_signal') {
+        sendSequenceToChannel(chatId);
     }
 });
 
@@ -77,29 +87,6 @@ bot.onText(/^[0-9]{9}$/, (msg) => {
         bot.sendMessage(chatId, 'ID refusé ❌. Veuillez créer un nouveau compte avec le code promo Free221 et réessayez.');
     } else {
         bot.sendMessage(chatId, 'Votre ID n\'est pas valide. Créez un nouveau compte avec le code promo Free221 et réessayez.');
-    }
-});
-
-bot.on('callback_query', (callbackQuery) => {
-  const chatId = callbackQuery.message.chat.id;
-
-  if (callbackQuery.data === 'next_signal') {
-    const nextSignal = generateRandomSignal();
-    bot.sendMessage(chatId, nextSignal, {
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: 'Signal suivant ✅️', callback_data: 'next_signal' }]
-        ]
-      }
-    });
-  }
-});
-// Next signal handling
-bot.on('callback_query', (callbackQuery) => {
-    const chatId = callbackQuery.message.chat.id;
-
-    if (callbackQuery.data === 'next_signal') {
-        sendSequenceToChannel(chatId);
     }
 });
 
