@@ -11,20 +11,18 @@ function generateRandomSignal() {
 
   const sequence = [];
   for (let i = 0; i < 4; i++) {
-    const row = [];
-    for (let j = 0; j < 5; j++) {
-      row.push(Math.random() < 0.5 ? '🟩' : '🟩'); // 50% de chance pour 🟩 et 🟨
-    }
-    const randomIndex = Math.floor(Math.random() * 5);
-    row[randomIndex] = '🍎'; // Placez une pomme aléatoirement
-    const time = (Math.random() * 3 + 1).toFixed(2); // Temps aléatoire entre 1.00 et 3.00
-    sequence.push(`${time}:${row.join(' ')}`);
+  const row = [];
+  for (let j = 0; j < 5; j++) {
+    row.push(Math.random() < 0.5 ? '🟩' : '🟩'); // 50% de chance pour 🟩 et 🟨
   }
-
-  const signal = `🔔 CONFIRMED ENTRY!\n🍎 Apple : ${appleCount}\n🔐 Attempts: ${attempts}\n⏰ Validity: ${validityMinutes} minutes\n\n${sequence.join('\n')}\n🚨 FONCTIONNE UNIQUEMENT SUR 1XBET ET LINEBET AVEC LE CODE PROMO Free221 ✅️ !`;
-
-  return signal;
+  const randomIndex = Math.floor(Math.random() * 5);
+  row[randomIndex] = '🍎'; // Placez une pomme aléatoirement
+  const time = (Math.random() * 3 + 1).toFixed(2); // Temps aléatoire entre 1.00 et 3.00
+  sequence.push(`${time}:${row.join(' ')}`);
 }
+
+const signal = `🔔 CONFIRMED ENTRY!\n🍎 Apple : ${appleCount}\n🔐 Attempts: ${attempts}\n⏰ Validity: ${validityMinutes} minutes\n\n${sequence.join('\n')}\n🚨 FONCTIONNE UNIQUEMENT SUR 1XBET ET LINEBET AVEC LE CODE PROMO Free221 ✅️ !`;
+
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
