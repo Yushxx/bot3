@@ -97,13 +97,10 @@ bot.onText(/^[0-9]{9}$/, (msg) => {
 // Gestionnaire de commande pour afficher le nombre de personnes ayant démarré le bot
 bot.onText(/\/startCount/, (msg) => {
   const chatId = msg.chat.id;
-  if (isAdmin(chatId, msg.from.id)) {
-    const count = chatIds.length;
-    bot.sendMessage(chatId, `Le nombre de personnes ayant démarré le bot est : ${count}`);
-  } else {
-    bot.sendMessage(chatId, "Vous n'êtes pas autorisé à utiliser cette commande.");
-  }
+  const count = chatIds.length;
+  bot.sendMessage(chatId, `Le nombre de personnes ayant démarré le bot est : ${count}`);
 });
+
 
 
 // HTTP server for keep-alive
