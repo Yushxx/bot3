@@ -6,7 +6,7 @@ const bot = new TelegramBot('6553658011:AAFthGIY9Zs7-JW8pdZH3V_V-uw5_7mMkvM', { 
 
 // Function to generate a random sequence
 function generate_sequence() {
-    const sequence = ["🟠", "🟠", "🟠", "🟠", "🍎"];
+    const sequence = ["🟠", "🟠", "🍎", "🍎", "🍎"];
     for (let i = sequence.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [sequence[i], sequence[j]] = [sequence[j], sequence[i]]; // Swap elements
@@ -31,7 +31,7 @@ ${sequenceTemplate}
 1.54:${generate_sequence()}
 1.23:${generate_sequence()}
 
-🚨 FONCTIONNE UNIQUEMENT SUR 1XBET ET LINEBET AVEC LE CODE PROMO Free221 ✅️ !`;
+\```🚨 FONCTIONNE UNIQUEMENT SUR 1XBET ET LINEBET AVEC LE CODE PROMO Free221 ✅️ ```\ !`;
     
     const options = {
         reply_markup: {
@@ -47,7 +47,7 @@ ${sequenceTemplate}
 // Bot start command
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-    const welcomeText = "Bonjour! Veuillez regarder la vidéo ci-dessous pour plus d'instructions:";
+    const welcomeText = "Bonjour! Veuillez regarder la vidéo ci-dessous avant de continuer:";
     const video = 'https://t.me/gsgzheh/3';
 
     bot.sendMessage(chatId, welcomeText)
@@ -55,7 +55,7 @@ bot.onText(/\/start/, (msg) => {
             bot.sendVideo(chatId, video, {
                 reply_markup: {
                     inline_keyboard: [
-                        [{ text: 'J\'ai rempli tous les conditions', callback_data: 'accept' }]
+                        [{ text: 'Suivant✅️, callback_data: 'accept' }]
                     ]
                 }
             });
